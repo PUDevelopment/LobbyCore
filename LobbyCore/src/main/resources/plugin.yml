@@ -1,0 +1,5 @@
+name: LobbyCore
+main: eu.playeruion.lobby.LobbyCore
+version: 1.0.0-SNAPSHOT
+api-version: 1.16
+website: https://www.playerunion.eu

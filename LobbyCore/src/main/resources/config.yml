@@ -1,0 +1,13 @@
+scoreboard:
+  fejlec: "&6&lPlayer&f&lUnion"
+  sorok:
+    - "Pontszámaid: &6${pontszamok}"
+    - "&0"
+    - "Szinted: &6${szint}"
+    - "&0&0"
+    - "Biteid: &6${bitek}"
+    - "&0&0&0"
+    - "Unitjaid: &6${unitok}"
+    - "&0&0&0&0"
+    - "&7${jelenlegi_datum}"
+  footer: "&6www.playerunion.eu"
