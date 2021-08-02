@@ -7,15 +7,19 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import eu.playeruion.lobby.handlers.ServerHandler;
+import eu.playeruion.lobby.listeners.PlayerListener;
 import eu.playeruion.lobby.scoreboard.BoardManager;
 
 public class LobbyCore extends JavaPlugin {
 	
 	private static LobbyCore instance;
 	private BoardManager boardManager;
+	private ServerHandler serverHandler;
 	
 	private File config = new File(this.getDataFolder(), "config.yml");
 	
@@ -36,11 +40,19 @@ public class LobbyCore extends JavaPlugin {
 		this.setupConfig();
 		
 		this.boardManager.initBoard();
+		
+		this.registerListeners();
+		
+		this.getLogger().info("A plugin sikeresen elindult!");
 	}
 	
 	@Override
 	public void onDisable() {
 		
+	}
+	
+	private void registerListeners() {
+		Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
 	}
 	
 	public void setupConfig(){
