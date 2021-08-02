@@ -11,6 +11,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import eu.playeruion.lobby.commands.BaseCommand;
 import eu.playeruion.lobby.handlers.ServerHandler;
 import eu.playeruion.lobby.listeners.PlayerListener;
 import eu.playeruion.lobby.scoreboard.BoardManager;
@@ -35,12 +36,15 @@ public class LobbyCore extends JavaPlugin {
 	public void onEnable() {
 		instance = this;
 		
+		this.serverHandler = new ServerHandler();
 		this.boardManager = new BoardManager();
 		
 		this.setupConfig();
 		
+		this.serverHandler.initTreasureThread();
 		this.boardManager.initBoard();
 		
+		this.registerCommands();
 		this.registerListeners();
 		
 		this.getLogger().info("A plugin sikeresen elindult!");
@@ -49,6 +53,11 @@ public class LobbyCore extends JavaPlugin {
 	@Override
 	public void onDisable() {
 		
+	}
+	
+	private void registerCommands() {
+		this.getCommand("treasure").setExecutor(new BaseCommand());
+		this.getCommand("armortool").setExecutor(new BaseCommand());
 	}
 	
 	private void registerListeners() {
@@ -108,6 +117,8 @@ public class LobbyCore extends JavaPlugin {
 		}
 	}
 	
-	
+	public ServerHandler getServerHandler() {
+		return this.serverHandler;
+	}
 
 }

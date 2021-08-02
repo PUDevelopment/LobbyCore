@@ -4,6 +4,12 @@ version: 1.0.0-SNAPSHOT
 api-version: 1.16
 website: https://www.playerunion.eu
 
+commands:
+  treasure:
+    description: Kincs fej lekerese.
+  armortool:
+    description: ArmorStand eltavolito.
+
 permissions:
   playerunion.build:
     description: Jogosultsag a szerveren valo epitkezesre.

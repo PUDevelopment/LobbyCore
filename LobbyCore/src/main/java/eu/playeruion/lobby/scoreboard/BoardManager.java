@@ -13,8 +13,6 @@ import org.bukkit.scoreboard.Team;
 
 import eu.playeruion.lobby.LobbyCore;
 import eu.playeruion.lobby.Utils;
-import eu.playerunion.xpsystem.Main;
-import eu.playerunion.xpsystem.core.XPManager;
 import me.clip.placeholderapi.PlaceholderAPI;
 import net.md_5.bungee.api.ChatColor;
 
@@ -39,7 +37,7 @@ public class BoardManager {
 			obj.unregister();
 		}
 		
-		Objective mainObjective = this.board.registerNewObjective("mainBoard-" + System.currentTimeMillis(), "dummy");
+		Objective mainObjective = this.board.registerNewObjective("board-" + utils.generateUniqueId(), "dummy");
 		
 		mainObjective.setDisplaySlot(DisplaySlot.SIDEBAR);
 		mainObjective.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.main.getConfig().getString("scoreboard.fejlec")));
@@ -51,10 +49,15 @@ public class BoardManager {
 			String line = ChatColor.translateAlternateColorCodes('&', lineIter.next());
 			String lineId = this.calculatePlaceholders(lineNumber);
 			
+			if(this.board.getTeam("line-" + lineNumber) != null)
+				this.board.getTeam("line-" + lineNumber).unregister();
+			
 			Team team = this.board.registerNewTeam("line-" + lineNumber);
 			
 			team.addEntry(lineId);
 			team.setPrefix(line);
+			
+			mainObjective.getScore(lineId).setScore(lineNumber);
 			
 			this.lineIndentifiers.put(lineNumber, lineId);
 			
