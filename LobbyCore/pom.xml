@@ -6,36 +6,17 @@
   <name>LobbyCore</name>
   
   <build>
-      <plugins>
-      	 <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-compiler-plugin</artifactId>
-              <version>3.8.1</version>
-              <configuration>
-                  <source>1.8</source>
-                  <target>1.8</target>
-              </configuration>
-          </plugin>
-          <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-assembly-plugin</artifactId>
-              <version>3.3.0</version>
-              <configuration>
-                  <descriptorRefs>
-                      <descriptorRef>jar-with-dependencies</descriptorRef>
-                  </descriptorRefs>
-              </configuration>
-              <executions>
-                  <execution>
-                      <id>assemble-all</id>
-                      <phase>package</phase>
-                      <goals>
-                          <goal>single</goal>
-                      </goals>
-                  </execution>
-              </executions>
-          </plugin>
-      </plugins>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.8.1</version>
+        
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
   
   <properties>
@@ -62,12 +43,17 @@
   		<id>PaperMC</id>
   		<url>https://papermc.io/repo/repository/maven-releases/</url>
   	</repository>
+  	
+  	<repository>
+  		<id>Citizens</id>
+  		<url>https://repo.citizensnpcs.co/</url>
+  	</repository>
   </repositories>
   
   <dependencies>
 	<dependency>
 		<groupId>org.spigotmc</groupId>
-		<artifactId>spigot-api</artifactId>
+		<artifactId>spigot</artifactId>
 		<version>1.16.5-R0.1-SNAPSHOT</version>
 	</dependency>
 	
@@ -90,9 +76,9 @@
 	</dependency>
 	
 	<dependency>
-		<groupId>org.json</groupId>
-		<artifactId>json</artifactId>
-		<version>20180813</version>
+		<groupId>net.citizensnpcs</groupId>
+		<artifactId>citizens-main</artifactId>
+		<version>2.0.28-SNAPSHOT</version>
 	</dependency>
   </dependencies>
   

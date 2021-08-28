@@ -1,5 +1,6 @@
 package eu.playeruion.lobby.scoreboard;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -41,6 +42,9 @@ public class BoardManager {
 		
 		mainObjective.setDisplaySlot(DisplaySlot.SIDEBAR);
 		mainObjective.setDisplayName(ChatColor.translateAlternateColorCodes('&', this.main.getConfig().getString("scoreboard.fejlec")));
+		
+		// Lista megfordítása, mivel fejjel lefelé olvassa be.
+		Collections.reverse(lines);
 		
 		Iterator<String> lineIter = lines.iterator();
 		int lineNumber = 0;

@@ -14,3 +14,6 @@ scoreboard:
 
 beallitasok:
   ajandekTextura: "eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvMzk2Y2UxM2ZmNjE1NWZkZjMyMzVkOGQyMjE3NGM1ZGU0YmY1NTEyZjFhZGVkYTFhZmEzZmMyODE4MGYzZjcifX19"
+  ajandek:
+    parancs:
+    - "unit ad %jatekos% 1"

@@ -12,7 +12,9 @@ import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import eu.playeruion.lobby.commands.BaseCommand;
+import eu.playeruion.lobby.handlers.PlaceholderHandler;
 import eu.playeruion.lobby.handlers.ServerHandler;
+import eu.playeruion.lobby.listeners.CitizensListener;
 import eu.playeruion.lobby.listeners.PlayerListener;
 import eu.playeruion.lobby.scoreboard.BoardManager;
 
@@ -42,7 +44,7 @@ public class LobbyCore extends JavaPlugin {
 		this.setupConfig();
 		
 		this.serverHandler.initTreasureThread();
-		this.boardManager.initBoard();
+		//this.boardManager.initBoard();
 		
 		this.registerCommands();
 		this.registerListeners();
@@ -58,10 +60,16 @@ public class LobbyCore extends JavaPlugin {
 	private void registerCommands() {
 		this.getCommand("treasure").setExecutor(new BaseCommand());
 		this.getCommand("armortool").setExecutor(new BaseCommand());
+		this.getCommand("speed").setExecutor(new BaseCommand());
 	}
 	
 	private void registerListeners() {
 		Bukkit.getPluginManager().registerEvents(new PlayerListener(), this);
+		Bukkit.getPluginManager().registerEvents(new CitizensListener(), this);
+		
+		Bukkit.getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+		
+		new PlaceholderHandler().register();
 	}
 	
 	public void setupConfig(){

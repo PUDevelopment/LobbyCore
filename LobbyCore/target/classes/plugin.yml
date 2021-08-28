@@ -3,9 +3,33 @@ main: eu.playeruion.lobby.LobbyCore
 version: 1.0.0-SNAPSHOT
 api-version: 1.16
 website: https://www.playerunion.eu
+authors: ["szviktor"]
+depend: ["PlaceholderAPI", "Citizens"]
+
+commands:
+  treasure:
+    description: "Kincs fej lekérése."
+    permission: "playerunion.treasure"
+    usage: "/<command>"
+    aliases: ["tr", "kincs"]
+  armortool:
+    description: "ArmorStand eltávolító eszköz lekérése."
+    permission: "playerunion.build"
+    usage: "/<command>"
+    aliases: ["at", "art"]
+  speed:
+    description: "Játékos sebességének módosítása."
+    permission: "playerunion.speed"
+    usage: "/<command>"
+    aliases: ["gyorsasag", "sebesseg", "speedup"]
 
 permissions:
   playerunion.build:
     description: Jogosultsag a szerveren valo epitkezesre.
+    default: op
   playerunion.gamemode:
     description: Jogosultsag a jatekmod valtasara.
+    default: op
+  playerunion.speed:
+    description: "Sebesség módosításának jogosultsága."
+    default: op
